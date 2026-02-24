@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truco Vidas</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+    <!-- Audio Elements -->
+    <audio id="bg-music" loop>
+        <source src="sounds/background.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="victory-music">
+        <source src="sounds/victory.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Mute Toggle Button -->
+    <button id="mute-btn" class="mute-btn">🔊</button>
+
+    <!-- Lobby Screen -->
+    <div id="lobby-screen" class="screen active">
+        <div class="lobby-container">
+            <h1>Truco Vidas</h1>
+
+            <div class="avatar-section">
+                <h2>Choose Your Avatar</h2>
+                <div id="avatar-grid" class="avatar-grid">
+                    <!-- Avatars will be injected by JS -->
+                </div>
+            </div>
+
+            <div class="input-section">
+                <input type="text" id="username-input" placeholder="Enter Username (max 25 chars)" maxlength="25">
+                <button id="join-btn">Join Game</button>
+            </div>
+
+            <div id="waiting-area" class="waiting-area hidden">
+                <h2>Waiting for Players...</h2>
+                <ul id="player-list">
+                    <!-- Player list will be injected by JS -->
+                </ul>
+                <button id="ready-btn">Ready</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+        <!-- Notifications Overlay -->
+        <div id="notification-overlay" class="notification hidden">
+            <span id="notification-text"></span>
+        </div>
+
+        <!-- Game Table -->
+        <div class="game-table">
+            <!-- Vira Card (Center) -->
+            <div id="vira-container" class="vira-container">
+                <!-- Vira card injected here -->
+            </div>
+
+            <!-- Table Cards (Played Cards) -->
+            <div id="table-cards-container" class="table-cards-container">
+                <!-- Played cards injected here -->
+            </div>
+
+            <!-- Opponents Containers (Dynamic Positioning) -->
+            <div id="opponents-container" class="opponents-container">
+                <!-- Opponent HUDs injected here -->
+            </div>
+        </div>
+
+        <!-- Local Player HUD & Hand (Bottom) -->
+        <div id="local-player-area" class="local-player-area">
+            <div id="local-hud" class="player-hud">
+                <!-- Local player stats -->
+            </div>
+            <div id="local-hand" class="hand-container">
+                <!-- Local player cards injected here -->
+            </div>
+        </div>
+
+        <!-- Betting Modal -->
+        <div id="betting-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>Place Your Bet!</h2>
+                <div id="bet-options" class="bet-options">
+                    <!-- Bet buttons injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="game-over-screen" class="screen">
+        <div class="game-over-content">
+            <h1>CHAMPION!</h1>
+            <div id="champion-avatar" class="champion-avatar"></div>
+            <h2 id="champion-name">Player Name</h2>
+            <button id="restart-btn">Play Again</button>
+        </div>
+    </div>
+
+    <script src="client.js"></script>
+</body>
+</html>
